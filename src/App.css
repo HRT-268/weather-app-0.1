@@ -1,0 +1,62 @@
+.container {
+    background: rgba(93, 239, 255, 0.2); /* Dark semi-transparent background */
+    backdrop-filter: blur(10px); /* Blurring effect */
+    padding: 20px;
+    text-align: center;
+    color: var(--main-text-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(66, 129, 136, 0.3);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+  }
+  
+  .custom-button {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: var(--main-text-color-blk);
+    background-color: var(--main-color-lightest);
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    width: 100%;
+  }
+
+.form-input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+
+}
+
+.suggestions {
+  /* width: 60%; */
+  max-height: 150px;
+  background-color: var(--main-color-lightest);
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+.suggestions >p {
+  color: var(--main-text-color-blk);
+  text-align: left;
+  font-size: 0.6rem;
+  height: 100%;
+  border-bottom: 0.5px solid var(--main-text-color-blk);
+}
+
+.suggestions > p:hover {
+  background-color: #d3d3d3; /* Light gray background on hover */
+}
+
+.suggestions > p:active {
+  background-color: #a9a9a9; /* Darker gray background on click */
+}
