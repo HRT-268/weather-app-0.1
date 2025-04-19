@@ -6,7 +6,7 @@ export const WeatherProvider = ({children}) => {
     const [searchQuery, setSearchQuery] = useState('')
     const [queryData, setQueryData] = useState(null)
     const [lonLatData, setLonLatData] = useState(null)
-    const [inputSuggestion, setInputSuggestion] = useState({lon: null, lat: null})
+    // const [inputSuggestion, setInputSuggestion] = useState({lon: null, lat: null})
     const [suggestion, setSugestion] = useState(null)
     const [confirmedCity, setConfirmedCity] = useState('')
     const [errMsg, setErrMsg] = useState('')
@@ -52,24 +52,6 @@ export const WeatherProvider = ({children}) => {
         getLocationSuggestions()
     }, [searchQuery])
 
-
-    useEffect(() => {
-        const getLonLat = async () => {
-            try {
-            // if (!inputSuggestion.lat || !inputSuggestion.lon) return
-                const lonLatRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${suggestion.lat}&lon=${suggestion.lon}&appid=${apiKey}&units=metric`)
-                const lonLatData = await lonLatRes.json()
-                setLonLatData(lonLatData)
-                console.log(lonLatData)
-                console.log(suggestion)
-            } catch (error) {
-                console.log('Error fetching Weather Data:', error)
-            }
-        }
-        getLonLat()
-    }, [suggestion])
-
-
     
     
     
@@ -85,8 +67,8 @@ export const WeatherProvider = ({children}) => {
         queryData, 
         setQueryData, 
 
-        inputSuggestion, 
-        setInputSuggestion,
+        // inputSuggestion, 
+        // setInputSuggestion,
         
         suggestion, setSugestion,
 
