@@ -27,18 +27,20 @@
 
 .form-input {
   display: block;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   width: 100%;
 }
 
-.form-select {
+/* .form-select {
   display: block;
   width: 100%;
 
-}
+} */
 
 .suggestions {
   /* width: 60%; */
+  display: block;
+  width: 100%;
   max-height: 150px;
   background-color: var(--main-color-lightest);
   overflow-y: auto;

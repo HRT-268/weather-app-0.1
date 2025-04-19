@@ -56,16 +56,18 @@ export const WeatherProvider = ({children}) => {
     useEffect(() => {
         const getLonLat = async () => {
             try {
-            if (!inputSuggestion.lat || !inputSuggestion.lon) return
-                const lonLatRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${inputSuggestion.lat}&lon=${inputSuggestion.lon}&appid=${apiKey}&units=metric`)
+            // if (!inputSuggestion.lat || !inputSuggestion.lon) return
+                const lonLatRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${suggestion.lat}&lon=${suggestion.lon}&appid=${apiKey}&units=metric`)
                 const lonLatData = await lonLatRes.json()
                 setLonLatData(lonLatData)
+                console.log(lonLatData)
+                console.log(suggestion)
             } catch (error) {
                 console.log('Error fetching Weather Data:', error)
             }
         }
         getLonLat()
-    }, [inputSuggestion.lon, inputSuggestion.lat])
+    }, [suggestion])
 
 
     
@@ -88,7 +90,8 @@ export const WeatherProvider = ({children}) => {
         
         suggestion, setSugestion,
 
-        confirmedCity, setConfirmedCity
+        confirmedCity, setConfirmedCity,
+        errMsg, setErrMsg
         }}>
         {children}
     </WeatherContext.Provider>
