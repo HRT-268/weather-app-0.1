@@ -4,7 +4,7 @@ import './App.css'
 import { WeatherContext } from './WeatherContext'
 
 export const LocationSuggestion = () => {
-    const {searchQuery, suggestion, setLonLatData} = useContext(WeatherContext)
+    const {setSearchQuery, searchQuery, setSuggestion, suggestion, setLonLatData, queryData} = useContext(WeatherContext)
 
     const suggestionChoice = async (place) => {
     const apiKey = 'b97575b21c57260bfb787231c7ca4e08'
@@ -12,7 +12,10 @@ export const LocationSuggestion = () => {
         const lonLatRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${place.lat}&lon=${place.lon}&appid=${apiKey}&units=metric`)
         const lonLatData = await lonLatRes.json()
         setLonLatData(lonLatData)
+        setSearchQuery('')
+        setSuggestion([])
         console.log(lonLatData)
+
       } catch (error) {
         console.log(`Error Fetching Longitude and Latitude: ${error}`)
       }

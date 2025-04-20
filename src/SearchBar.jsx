@@ -3,7 +3,7 @@ import { WeatherContext } from './WeatherContext'
 import './App.css'
 
 export const SearchBar = () => {
-    const {searchQuery, setSearchQuery, setConfirmedCity, suggestion, queryData, errMsg} = useContext(WeatherContext)
+    const {searchQuery, setSearchQuery, setConfirmedCity, setSuggestion, suggestion, queryData, setErrMsg, errMsg} = useContext(WeatherContext)
     const x = useContext(WeatherContext)
 
     // console.log(x)
@@ -14,12 +14,14 @@ export const SearchBar = () => {
         e.preventDefault()
         // const input = e.target.elements.inputCity.value
         setConfirmedCity(searchQuery)
+        
+        
     }
 
     const detectQuery = (e) => {
         const input = e.target.value
         setSearchQuery(input)
-        
+        if (errMsg) setErrMsg('')
 
      }
 
@@ -41,7 +43,7 @@ export const SearchBar = () => {
                     type="text" 
                     name='inputCity' 
                     placeholder='City Name' 
-                    // value={searchQuery} 
+                    value={searchQuery} 
                     onChange={detectQuery}
                     />
                 
@@ -53,6 +55,7 @@ export const SearchBar = () => {
                     <i className="fa-solid fa-location-dot"></i>
                 </button>  
             </form>
+            {errMsg && <p className='errMsg'>{errMsg}</p>}
             
         </>
     )

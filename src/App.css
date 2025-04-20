@@ -62,3 +62,11 @@
 .suggestions > p:active {
   background-color: #a9a9a9; /* Darker gray background on click */
 }
+
+.errMsg {
+  width: 96%;
+  color: red;
+  font-size: 0.5rem;
+  text-align: left;
+  margin-top: 0;
+}

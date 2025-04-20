@@ -7,7 +7,7 @@ export const WeatherProvider = ({children}) => {
     const [queryData, setQueryData] = useState(null)
     const [lonLatData, setLonLatData] = useState(null)
     // const [inputSuggestion, setInputSuggestion] = useState({lon: null, lat: null})
-    const [suggestion, setSugestion] = useState(null)
+    const [suggestion, setSuggestion] = useState([])
     const [confirmedCity, setConfirmedCity] = useState('')
     const [errMsg, setErrMsg] = useState('')
     const apiKey = 'b97575b21c57260bfb787231c7ca4e08'
@@ -28,7 +28,10 @@ export const WeatherProvider = ({children}) => {
 
             } catch (error) {
                 console.log('Error Fetching query Data:', error)
-                setErrMsg("Invalid Location name")
+                setErrMsg("City not found. Please try again.")
+                setSearchQuery([])
+                return
+
             }
         }
         getQuery()
@@ -40,8 +43,8 @@ export const WeatherProvider = ({children}) => {
             try {
             const suggestionRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=5&appid=${apiKey}`)
             const suggestionData = await suggestionRes.json()
-            setSugestion(suggestionData)
-            console.log(suggestionData)
+            setSuggestion(suggestionData)
+            // console.log(suggestionData)
             
             } catch (error) {
                 console.log('Error fetching input suggestion: ', error )
@@ -70,7 +73,7 @@ export const WeatherProvider = ({children}) => {
         // inputSuggestion, 
         // setInputSuggestion,
         
-        suggestion, setSugestion,
+        suggestion, setSuggestion,
 
         confirmedCity, setConfirmedCity,
         errMsg, setErrMsg
