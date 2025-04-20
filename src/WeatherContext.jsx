@@ -10,6 +10,7 @@ export const WeatherProvider = ({children}) => {
     const [suggestion, setSuggestion] = useState([])
     const [confirmedCity, setConfirmedCity] = useState('')
     const [errMsg, setErrMsg] = useState('')
+    const [submitTrigger, setSubmitTrigger] = useState(0);
     const apiKey = 'b97575b21c57260bfb787231c7ca4e08'
 
     useEffect(() => {
@@ -35,7 +36,7 @@ export const WeatherProvider = ({children}) => {
             }
         }
         getQuery()
-    }, [confirmedCity])
+    }, [confirmedCity, submitTrigger])
 
     useEffect( () => {
         const getLocationSuggestions = async () => {
@@ -76,7 +77,8 @@ export const WeatherProvider = ({children}) => {
         suggestion, setSuggestion,
 
         confirmedCity, setConfirmedCity,
-        errMsg, setErrMsg
+        errMsg, setErrMsg,
+        submitTrigger, setSubmitTrigger
         }}>
         {children}
     </WeatherContext.Provider>

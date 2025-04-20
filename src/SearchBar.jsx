@@ -3,7 +3,7 @@ import { WeatherContext } from './WeatherContext'
 import './App.css'
 
 export const SearchBar = () => {
-    const {searchQuery, setSearchQuery, setConfirmedCity, setSuggestion, suggestion, queryData, setErrMsg, errMsg} = useContext(WeatherContext)
+    const {searchQuery, setSearchQuery, setConfirmedCity, setSuggestion, suggestion, queryData, setErrMsg, errMsg, setSubmitTrigger} = useContext(WeatherContext)
     const x = useContext(WeatherContext)
 
     // console.log(x)
@@ -14,6 +14,8 @@ export const SearchBar = () => {
         e.preventDefault()
         // const input = e.target.elements.inputCity.value
         setConfirmedCity(searchQuery)
+        setSubmitTrigger(prev => prev + 1)
+        setSearchQuery('')
         
         
     }
