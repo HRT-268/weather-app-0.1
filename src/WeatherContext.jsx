@@ -40,7 +40,7 @@ export const WeatherProvider = ({children}) => {
 
     useEffect( () => {
         const getLocationSuggestions = async () => {
-            if (!searchQuery) return
+            if (!searchQuery || errMsg) return
             try {
             const suggestionRes = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=5&appid=${apiKey}`)
             const suggestionData = await suggestionRes.json()
